@@ -30,8 +30,14 @@ const getTasks = async ({ id, isCompleted }) => {
   const result = await db.task.find(where)
   return result
 }
+
+const deleteTask = async ({ id }) => {
+  const result = await db.task.findByIdAndDelete(id)
+  return result
+}
 module.exports = {
   createTask,
   editTask,
-  getTasks
+  getTasks,
+  deleteTask
 }
