@@ -19,6 +19,30 @@ const createTask = async (request, response) => {
   }
 }
 
+const editTask = async (request, response) => {
+  try{
+    const options = request.body
+    if(!options.id) {
+      setResponse(response,{
+        status: RESPONSE_STATUS.BAD_REQUEST,
+        detail: 'Required Param \'id\''
+      })
+    }
+    const editedTask = await taskService.editTask(options)
+    setResponse(response, {
+      status: RESPONSE_STATUS.OK,
+      data: editedTask
+    })
+  }catch(exception) {
+    console.log(exception)
+    setResponse(response, {
+      status: RESPONSE_STATUS.NOT_GOOD,
+      detail: exception
+    })
+  }
+}
+
 module.exports = {
-  createTask
+  createTask,
+  editTask
 }

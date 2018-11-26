@@ -8,6 +8,20 @@ const createTask = async ({ title, description, createdAt }) => {
   const result = await newTask.save()
   return result
 }
+
+const editTask = async ({ id, title, description, createdAt }) => {  
+  const result = await db.task.findByIdAndUpdate( id, { 
+    $set: { 
+      title,
+      description,
+      createdAt 
+    } 
+  }, 
+  { new: true })
+
+  return result
+}
 module.exports = {
-  createTask
+  createTask,
+  editTask
 }
