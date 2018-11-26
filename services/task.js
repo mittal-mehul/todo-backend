@@ -9,19 +9,29 @@ const createTask = async ({ title, description, createdAt }) => {
   return result
 }
 
-const editTask = async ({ id, title, description, createdAt }) => {  
+const editTask = async ({ id, title, description, createdAt, isCompleted }) => {  
   const result = await db.task.findByIdAndUpdate( id, { 
     $set: { 
       title,
       description,
-      createdAt 
+      createdAt,
+      isCompleted 
     } 
   }, 
   { new: true })
 
   return result
 }
+
+const getTasks = async ({ id, isCompleted }) => {
+  const where = {}
+  id && (where._id = id)
+  isCompleted && (where.isCompleted = isCompleted)
+  const result = await db.task.find(where)
+  return result
+}
 module.exports = {
   createTask,
-  editTask
+  editTask,
+  getTasks
 }

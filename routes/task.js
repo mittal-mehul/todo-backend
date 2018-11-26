@@ -3,7 +3,7 @@ const router = express.Router()
 
 const taskCtrl = require('../controllers/task')
 
-router.get('/test', (req, res) => res.send('Working Fine!'))
+router.get('/show', taskCtrl.getTasks)
 router.post('/create', taskCtrl.createTask)
 router.post('/edit', taskCtrl.editTask)
 

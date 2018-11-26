@@ -42,7 +42,25 @@ const editTask = async (request, response) => {
   }
 }
 
+const getTasks = async (request, response) => {
+  try{
+    const options = request.query
+    const tasks = await taskService.getTasks(options)
+    setResponse(response, {
+      status: RESPONSE_STATUS.OK,
+      data: tasks
+    })
+  }catch(exception) {
+    console.log(exception)
+    setResponse(response, {
+      status: RESPONSE_STATUS.NOT_GOOD,
+      detail: exception
+    })
+  }
+}
+
 module.exports = {
   createTask,
-  editTask
+  editTask,
+  getTasks
 }
