@@ -1,6 +1,6 @@
-const task = require('./user')
+const task = require('./task')
 const mongoose = require('mongoose')
-// mongoose.set('debug', true)
+mongoose.set('debug', true)
 module.exports = {
   task
 }
