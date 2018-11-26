@@ -41,9 +41,22 @@ const deleteTask = async ({ id, ids }) => {
   }
   return result
 }
+
+const markDone = async ({ id, ids }) => {
+  let result = {}
+  if(id) {
+    result = await db.task.findByIdAndUpdate(id, { $set: { isCompleted: true }}, { new: true })
+  }
+  else {
+    result = await db.task.updateMany({ _id: {$in: ids }}, { $set: { isCompleted: true }})
+  }
+  return result
+}
+
 module.exports = {
   createTask,
   editTask,
   getTasks,
-  deleteTask
+  deleteTask,
+  markDone
 }

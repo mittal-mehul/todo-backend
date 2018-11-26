@@ -82,9 +82,33 @@ const deleteTask = async (request, response) => {
     })
   }
 }
+
+const markDone = async (request, response) => {
+  try{
+    const options = request.body
+    if(!options.id && (!options.ids || !options.ids.length)) {
+      setResponse(response, {
+        status: RESPONSE_STATUS.BAD_REQUEST,
+        detail: 'At least one id is required'
+      })
+    }
+    const result = await taskService.markDone(options)
+    setResponse(response, {
+      status: RESPONSE_STATUS.OK,
+      data: result
+    })
+  }catch(exception) {
+    console.log(exception)
+    setResponse(response, {
+      status: RESPONSE_STATUS.NOT_GOOD,
+      detail: exception
+    })
+  }
+}
 module.exports = {
   createTask,
   editTask,
   getTasks,
-  deleteTask
+  deleteTask,
+  markDone
 }
