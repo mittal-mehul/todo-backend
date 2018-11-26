@@ -1,0 +1,22 @@
+{
+  "name": "todo-backend",
+  "version": "1.0.0",
+  "description": "A simple single-user todo app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mittal-mehul/todo-backend.git"
+  },
+  "author": "Mehul Mittal aka wickedone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mittal-mehul/todo-backend/issues"
+  },
+  "homepage": "https://github.com/mittal-mehul/todo-backend#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
