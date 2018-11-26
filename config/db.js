@@ -1,4 +1,4 @@
-const db = 'mongodb://localhost:27017/socials'
+const db = 'mongodb://localhost:27017/todo'
 
 module.exports = {
   db
